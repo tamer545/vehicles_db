@@ -11,17 +11,9 @@ public class Vehicletwo {
     private Integer horsepower;
     private Integer weight;
     private Integer acceleration;
-    private Integer year;
+    private Integer yearx;
     private Integer origin;
-    private String name;
-    private Long id;
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
+    private String namex;
     @Id
-    public Long getId() {
-        return id;
-    }
+    private Long id;
 }

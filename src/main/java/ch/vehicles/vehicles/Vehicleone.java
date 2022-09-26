@@ -5,8 +5,8 @@ import javax.persistence.Id;
 
 @Entity
 public class Vehicleone {
-    private String name;
-    private Integer year;
+    private String namex;
+    private Integer yearx;
     private Integer sellingprice;
     private Integer kmdriven;
     private String fuel;
@@ -18,15 +18,9 @@ public class Vehicleone {
     private String maxpower;
     private String torque;
     private Integer seats;
+    @Id
     private Long id;
 
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
-    @Id
-    public Long getId() {
-        return id;
-    }
 }
