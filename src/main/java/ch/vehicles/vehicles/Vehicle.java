@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Vehicleone {
+public class Vehicle {
     private String namex;
     private Integer yearx;
     private Integer sellingprice;
