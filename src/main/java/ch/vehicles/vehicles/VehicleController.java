@@ -38,4 +38,9 @@ public class VehicleController {
     public ResponseEntity<List<Vehicle>> findAllByNameAndYear(@PathVariable("year") int year, @PathVariable("name") String name) {
         return ResponseEntity.ok(service.findAllByNameAndYear(name, year));
     }
+
+    @GetMapping("/join")
+    public ResponseEntity<List<Object>> joinTwoTables() {
+        return ResponseEntity.ok(service.joinTwoTables());
+    }
 }

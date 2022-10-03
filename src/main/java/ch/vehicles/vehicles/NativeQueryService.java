@@ -13,7 +13,7 @@ public class NativeQueryService {
     }
 
     public List findAllByName(String name) {
-        return em.createNativeQuery("SELECT * FROM VEHICLEONE WHERE NAME='" + name + "'").getResultList();
+        return em.createNativeQuery("SELECT * FROM VEHICLE WHERE NAME='" + name + "'").getResultList();
     }
 
 }

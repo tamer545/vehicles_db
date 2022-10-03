@@ -34,6 +34,10 @@ public class VehicleService {
     public List<Vehicle> findAllByNameAndYear(String name, int year) {
         return repository.findAllByNameAndYear(name, year);
     }
+
+    public List<Object> joinTwoTables() {
+        return repository.joinTwoTables();
+    }
 }
 
 

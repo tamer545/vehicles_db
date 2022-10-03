@@ -1,4 +1,5 @@
 package ch.vehicles.vehicles;
+
 import org.assertj.core.api.WithAssertions;
 import org.testng.annotations.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +11,13 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 @SpringBootTest
-public class VehicleTests WithAssertions{
+public class VehicleTests WithAssertions {
 
     @Autowired
     VehicleRepository repository;
 
     @Test
-    void findAllByYear(){
+    void findAllByYear() {
         List<Vehicle> vehicles = repository.findAllByYear(2005);
 
         for (Vehicle vehicle : vehicles) {
@@ -43,6 +44,7 @@ public class VehicleTests WithAssertions{
         assertThat(vehiclePage.getSize()).isEqualTo(5);
         assertThat(vehiclePage.stream().findFirst().get().getId().getYearx()).isEqualTo(vehiclesWithYear.get(0).getId().getYearx());
     }
+
     @Test
     void selectWithTwoWhere() {
         List<Vehicle> vehicles = repository.findAllByNameAndYear("Hyundai i20 Sportz Diesel", 2010);
@@ -51,6 +53,13 @@ public class VehicleTests WithAssertions{
             assertThat(vehicle.getYearx()).isEqualTo(2010);
             assertThat(vehicle.getNamex()).isEqualTo("Hyundai i20 Sportz Diesel");
         }
+    }
+
+
+    @Test
+    void joinTwoTables() {
+        List<Object> list = repository.joinTwoTables();
+        assertThat(list.get(0)).isEqualTo(new Object[]{"Maruti Swift Dzire VDI", 2014, 450000, 145500, "Diesel", "Individual", "Manual", "First Owner", "23.4 kmpl", "1248 CC", "74 bhp", "190Nm@", "2000rpm", 5});
     }
 
 }
