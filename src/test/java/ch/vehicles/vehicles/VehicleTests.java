@@ -1,17 +1,17 @@
 package ch.vehicles.vehicles;
 
 import org.assertj.core.api.WithAssertions;
-import org.testng.annotations.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.testng.annotations.Test;
 
 import java.util.List;
 
 @SpringBootTest
-public class VehicleTests WithAssertions {
+public class VehicleTests implements WithAssertions {
 
     @Autowired
     VehicleRepository repository;
@@ -42,7 +42,7 @@ public class VehicleTests WithAssertions {
         List<Vehicle> vehiclesWithYear = repository.findAllByYear(2017);
 
         assertThat(vehiclePage.getSize()).isEqualTo(5);
-        assertThat(vehiclePage.stream().findFirst().get().getId().getYearx()).isEqualTo(vehiclesWithYear.get(0).getId().getYearx());
+        assertThat(vehiclePage.stream().findFirst().get().getId()).isEqualTo(vehiclesWithYear.get(0).getId());
     }
 
     @Test
