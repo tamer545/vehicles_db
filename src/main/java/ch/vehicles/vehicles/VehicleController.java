@@ -1,5 +1,7 @@
 package ch.vehicles.vehicles;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,9 +26,9 @@ public class VehicleController {
         return ResponseEntity.ok(service.findAllByName(name));
     }
 
-    @GetMapping("/pageable/{newestYear}")
-    public ResponseEntity<Page<Vehicle>> findAllByNewestYear(@PathVariable("newestYear") int newestYear) {
-        return ResponseEntity.ok(service.findByNewestYear(newestYear));
+    @GetMapping("/pageable/{year}")
+    public ResponseEntity<Page<Vehicle>> findByYear(@PathVariable("year") int year, @RequestBody PageRequest  pageable) {
+        return ResponseEntity.ok(service.findByYear(year, pageable));
     }
 
     @DeleteMapping("/delete/{name}")
@@ -40,7 +42,7 @@ public class VehicleController {
     }
 
     @GetMapping("/join")
-    public ResponseEntity<List<Object>> joinTwoTables() {
+    public ResponseEntity<List<Vehicle>> joinTwoTables() {
         return ResponseEntity.ok(service.joinTwoTables());
     }
 }

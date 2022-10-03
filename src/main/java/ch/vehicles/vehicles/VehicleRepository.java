@@ -10,15 +10,15 @@ import java.util.List;
 
 @Transactional
 public interface VehicleRepository extends JpaRepository<Vehicle, VehicleID>{
-    List<Vehicle> findAllByName(String name);
-    List<Vehicle> findAllByYear(int year);
+    List<Vehicle> findAllByNamex(String name);
+    List<Vehicle> findAllByYearx(int year);
 
-    String deleteByName(String name);
+    String deleteByNamex(String name);
 
-    Page<Vehicle> findByNewestYear(int year, Pageable pageable);
+    Page<Vehicle> findByYearx(int year, Pageable pageable);
 
-    List<Vehicle> findAllByNameAndYear(String name, int year);
+    List<Vehicle> findAllByNamexAndYearx(String name, int year);
 
-    @Query(value = "SELECT namex, yearx,sellingprice,kmdriven,fuel,sellertype,transmission,owner,mileage,engine,maxpower,torque,seats FROM VEHICLE AS v INNER JOIN VEHICLETWO AS v2 ON v.NAMEX = v2.NAMEX", nativeQuery = true)
-    List<Object> joinTwoTables();
+    @Query(value = "SELECT * FROM VEHICLE AS v INNER JOIN VEHICLETWO AS v2 ON v.NAMEX = v2.NAMEX", nativeQuery = true)
+    List<Vehicle> joinTwoTables();
 }

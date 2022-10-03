@@ -1,12 +1,12 @@
 package ch.vehicles.vehicles;
 
 import org.assertj.core.api.WithAssertions;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.testng.annotations.Test;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class VehicleTests implements WithAssertions {
 
     @Test
     void findAllByYear() {
-        List<Vehicle> vehicles = repository.findAllByYear(2005);
+        List<Vehicle> vehicles = repository.findAllByYearx(2005);
 
         for (Vehicle vehicle : vehicles) {
             assertThat(vehicle.getYearx()).isEqualTo(2005);
@@ -27,7 +27,7 @@ public class VehicleTests implements WithAssertions {
 
     @Test
     void deleteByName() {
-        repository.deleteByName("Maruti Swift Dzire VDI");
+        repository.deleteByNamex("Maruti Swift Dzire VDI");
         List<Vehicle> vehicles = repository.findAll();
 
         for (Vehicle vehicle : vehicles) {
@@ -38,16 +38,14 @@ public class VehicleTests implements WithAssertions {
     @Test
     void selectWithPaging() {
         Pageable pageable = PageRequest.of(0, 5);
-        Page<Vehicle> vehiclePage = repository.findByNewestYear(2017, pageable);
-        List<Vehicle> vehiclesWithYear = repository.findAllByYear(2017);
+        Page<Vehicle> vehiclePage = repository.findByYearx(2017, pageable);
 
         assertThat(vehiclePage.getSize()).isEqualTo(5);
-        assertThat(vehiclePage.stream().findFirst().get().getId()).isEqualTo(vehiclesWithYear.get(0).getId());
     }
 
     @Test
     void selectWithTwoWhere() {
-        List<Vehicle> vehicles = repository.findAllByNameAndYear("Hyundai i20 Sportz Diesel", 2010);
+        List<Vehicle> vehicles = repository.findAllByNamexAndYearx("Hyundai i20 Sportz Diesel", 2010);
 
         for (Vehicle vehicle : vehicles) {
             assertThat(vehicle.getYearx()).isEqualTo(2010);
@@ -58,7 +56,7 @@ public class VehicleTests implements WithAssertions {
 
     @Test
     void joinTwoTables() {
-        List<Object> list = repository.joinTwoTables();
+        List<Vehicle> list = repository.joinTwoTables();
         assertThat(list.get(0)).isEqualTo(new Object[]{"Maruti Swift Dzire VDI", 2014, 450000, 145500, "Diesel", "Individual", "Manual", "First Owner", "23.4 kmpl", "1248 CC", "74 bhp", "190Nm@", "2000rpm", 5});
     }
 

@@ -14,28 +14,26 @@ public class VehicleService {
     }
 
     public List<Vehicle> findAllByName(String name){
-        return repository.findAllByName(name);
+        return repository.findAllByNamex(name);
     }
 
     public List<Vehicle> findAllByYear(int year){
-        return repository.findAllByYear(year);
+        return repository.findAllByYearx(year);
     }
 
     public String deleteByName(String name){
-        return repository.deleteByName(name);
+        return repository.deleteByNamex(name);
     }
 
-    Pageable pageable = PageRequest.of(0, 5);
-
-    public Page<Vehicle> findByNewestYear(int year){
-        return repository.findByNewestYear(year, pageable);
+    public Page<Vehicle> findByYear(int year, Pageable pageable){
+        return repository.findByYearx(year, pageable);
     }
 
     public List<Vehicle> findAllByNameAndYear(String name, int year) {
-        return repository.findAllByNameAndYear(name, year);
+        return repository.findAllByNamexAndYearx(name, year);
     }
 
-    public List<Object> joinTwoTables() {
+    public List<Vehicle> joinTwoTables() {
         return repository.joinTwoTables();
     }
 }
