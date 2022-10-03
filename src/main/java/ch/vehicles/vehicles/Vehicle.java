@@ -21,6 +21,59 @@ public class Vehicle {
     @Id
     private Long id;
 
+    public String getNamex() {
+        return namex;
+    }
 
+    public Integer getYearx() {
+        return yearx;
+    }
 
+    public Integer getSellingprice() {
+        return sellingprice;
+    }
+
+    public Integer getKmdriven() {
+        return kmdriven;
+    }
+
+    public String getFuel() {
+        return fuel;
+    }
+
+    public String getSellertype() {
+        return sellertype;
+    }
+
+    public String getTransmission() {
+        return transmission;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public String getMileage() {
+        return mileage;
+    }
+
+    public Integer getEngine() {
+        return engine;
+    }
+
+    public String getMaxpower() {
+        return maxpower;
+    }
+
+    public String getTorque() {
+        return torque;
+    }
+
+    public Integer getSeats() {
+        return seats;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }

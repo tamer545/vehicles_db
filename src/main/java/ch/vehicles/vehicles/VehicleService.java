@@ -30,6 +30,10 @@ public class VehicleService {
     public Page<Vehicle> findByNewestYear(int year){
         return repository.findByNewestYear(year, pageable);
     }
+
+    public List<Vehicle> findAllByNameAndYear(String name, int year) {
+        return repository.findAllByNameAndYear(name, year);
+    }
 }
 
 

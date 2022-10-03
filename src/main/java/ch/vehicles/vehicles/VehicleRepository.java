@@ -18,4 +18,6 @@ public interface VehicleRepository extends JpaRepository<Vehicle, VehicleID>{
 
     Page<Vehicle> findByNewestYear(int year, Pageable pageable);
 
+    List<Vehicle> findAllByNameAndYear(String name, int year);
+
 }
